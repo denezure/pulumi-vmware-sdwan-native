@@ -17,8 +17,11 @@ package main
 import (
 	p "github.com/pulumi/pulumi-go-provider"
 
-	xyz "github.com/pulumi/pulumi-xyz/provider"
+	xyz "github.com/pulumi/pulumi-xyz/provider/pkg/provider"
+	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
 )
 
 // Serve the provider against Pulumi's Provider protocol.
-func main() { p.RunProvider(xyz.Name, xyz.Version, xyz.Provider()) }
+func main() {
+	p.RunProvider(xyz.Name, version.Version, xyz.Provider())
+}

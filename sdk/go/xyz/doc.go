@@ -1,2 +1,2 @@
-// Package xyz exports types, functions, subpackages for provisioning xyz resources.
+// Work-in-progress VMware SD-WAN Pulumi provider
 package xyz

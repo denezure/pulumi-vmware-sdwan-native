@@ -9,7 +9,7 @@ NUGET_PKG_NAME   := Pulumi.Xyz
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         ?= $(shell pulumictl get version)
 PROVIDER_PATH   := provider
-VERSION_PATH    := ${PROVIDER_PATH}.Version
+VERSION_PATH    := ${PROVIDER_PATH}/pkg/version.Version
 
 GOPATH			:= $(shell go env GOPATH)
 
@@ -49,7 +49,6 @@ nodejs_sdk::
 	cd ${PACKDIR}/nodejs/ && \
 		yarn install && \
 		yarn run tsc && \
-		cp -R scripts/ bin && \
 		cp ../../README.md ../../LICENSE package.json yarn.lock bin/ && \
 		sed -i.bak 's/$${VERSION}/$(VERSION)/g' bin/package.json && \
 		rm ./bin/package.json.bak
@@ -67,7 +66,13 @@ python_sdk::
 		cd ./bin && python3 setup.py build sdist
 
 .PHONY: build
-build:: provider dotnet_sdk go_sdk nodejs_sdk python_sdk
+build:: provider build_sdks
+
+.PHONY: build_dev
+build_dev:: nodejs_sdk
+
+.PHONY: build_sdks
+build_sdks:: dotnet_sdk go_sdk nodejs_sdk python_sdk
 
 # Required for the codegen action that runs in pulumi/pulumi
 only_build:: build
@@ -79,6 +84,9 @@ lint::
 
 
 install:: install_nodejs_sdk install_dotnet_sdk
+	cp $(WORKING_DIR)/bin/${PROVIDER} ${GOPATH}/bin
+
+install_dev:: install_nodejs_sdk
 	cp $(WORKING_DIR)/bin/${PROVIDER} ${GOPATH}/bin
 
 

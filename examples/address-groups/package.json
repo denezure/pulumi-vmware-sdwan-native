@@ -1,5 +1,6 @@
 {
-    "name": "xyz-typescript",
+    "name": "address-groups",
+    "main": "index.ts",
     "version": "0.1.0",
     "devDependencies": {
         "@types/node": "latest"

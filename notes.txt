@@ -1,0 +1,19 @@
+- what data types should be used for internal state?
+    - pulumi seems limited here - no network types, enums?, ???
+    - needs to be efficient - lots of config data
+- need to create wrappers for all used API calls
+    - can't let the messiness spread
+
+implementation list:
+- service (a.k.a. port) groups
+- firewall config module
+    - rules
+- profiles
+- edges
+
+long term:
+- provide component resources
+    - topology-level
+    - get around firewall rule limitations
+        - can only match single source/destination
+        - codegen the required rules
