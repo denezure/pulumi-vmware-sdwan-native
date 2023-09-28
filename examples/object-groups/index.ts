@@ -1,5 +1,4 @@
-import * as pulumi from "@pulumi/pulumi";
-import * as vsdw from "@pulumi/xyz";
+import * as vsdw from "@pulumi/veco";
 
 const portDef = (start: number, stop?: number) => {
     return {portStart: start, portEnd: stop ?? start} as vsdw.types.input.resources.ServiceGroupTcpArgs

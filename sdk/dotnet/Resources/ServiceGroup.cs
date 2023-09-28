@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Xyz.Resources
+namespace Pulumi.Veco.Resources
 {
-    [XyzResourceType("xyz:resources:ServiceGroup")]
+    [VecoResourceType("veco:resources:ServiceGroup")]
     public partial class ServiceGroup : global::Pulumi.CustomResource
     {
         [Output("icmp")]
@@ -36,12 +36,12 @@ namespace Pulumi.Xyz.Resources
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceGroup(string name, ServiceGroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("xyz:resources:ServiceGroup", name, args ?? new ServiceGroupArgs(), MakeResourceOptions(options, ""))
+            : base("veco:resources:ServiceGroup", name, args ?? new ServiceGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceGroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("xyz:resources:ServiceGroup", name, null, MakeResourceOptions(options, id))
+            : base("veco:resources:ServiceGroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

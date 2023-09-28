@@ -1,1 +1,1 @@
-Work-in-progress VMware SD-WAN Pulumi provider
+VMware Edge Cloud Orchestrator provider

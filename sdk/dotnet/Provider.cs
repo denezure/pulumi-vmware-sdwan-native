@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Xyz
+namespace Pulumi.Veco
 {
-    [XyzResourceType("pulumi:providers:xyz")]
+    [VecoResourceType("pulumi:providers:veco")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.Xyz
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
-            : base("xyz", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
+            : base("veco", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 

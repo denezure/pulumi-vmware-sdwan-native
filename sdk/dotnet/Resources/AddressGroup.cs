@@ -7,9 +7,9 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Xyz.Resources
+namespace Pulumi.Veco.Resources
 {
-    [XyzResourceType("xyz:resources:AddressGroup")]
+    [VecoResourceType("veco:resources:AddressGroup")]
     public partial class AddressGroup : global::Pulumi.CustomResource
     {
         [Output("addressGroupId")]
@@ -30,12 +30,12 @@ namespace Pulumi.Xyz.Resources
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AddressGroup(string name, AddressGroupArgs args, CustomResourceOptions? options = null)
-            : base("xyz:resources:AddressGroup", name, args ?? new AddressGroupArgs(), MakeResourceOptions(options, ""))
+            : base("veco:resources:AddressGroup", name, args ?? new AddressGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AddressGroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("xyz:resources:AddressGroup", name, null, MakeResourceOptions(options, id))
+            : base("veco:resources:AddressGroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

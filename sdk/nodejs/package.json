@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/xyz",
+    "name": "@pulumi/veco",
     "version": "${VERSION}",
     "keywords": [
         "pulumi",
@@ -19,6 +19,6 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "xyz"
+        "name": "veco"
     }
 }

@@ -18,7 +18,7 @@ export class AddressGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'xyz:resources:AddressGroup';
+    public static readonly __pulumiType = 'veco:resources:AddressGroup';
 
     /**
      * Returns true if the given object is an instance of AddressGroup.  This is designed to work even

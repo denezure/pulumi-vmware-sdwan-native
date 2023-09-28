@@ -145,7 +145,7 @@ class ServiceGroup(pulumi.CustomResource):
             __props__.__dict__["udp"] = udp
             __props__.__dict__["service_group_id"] = None
         super(ServiceGroup, __self__).__init__(
-            'xyz:resources:ServiceGroup',
+            'veco:resources:ServiceGroup',
             resource_name,
             __props__,
             opts)

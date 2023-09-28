@@ -7,8 +7,8 @@ import (
 	"net"
 	"strconv"
 
-	models "github.com/pulumi/pulumi-xyz/provider/pkg/provider/models/swagger"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/provider/utils"
+	models "github.com/nick-barrett/pulumi-veco/provider/pkg/provider/models/swagger"
+	"github.com/nick-barrett/pulumi-veco/provider/pkg/provider/utils"
 )
 
 type Prefix string

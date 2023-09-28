@@ -69,7 +69,7 @@ class Provider(pulumi.ProviderResource):
                  vco_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Xyz resource with the given unique name, props, and options.
+        Create a Veco resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] vco_api_key: API key for the VCO
@@ -82,7 +82,7 @@ class Provider(pulumi.ProviderResource):
                  args: ProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Xyz resource with the given unique name, props, and options.
+        Create a Veco resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,7 +122,7 @@ class Provider(pulumi.ProviderResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["vcoApiKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
-            'xyz',
+            'veco',
             resource_name,
             __props__,
             opts)

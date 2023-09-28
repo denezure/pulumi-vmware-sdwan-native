@@ -20,13 +20,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "xyz:resources:AddressGroup":
+            case "veco:resources:AddressGroup":
                 return new AddressGroup(name, <any>undefined, { urn })
-            case "xyz:resources:ServiceGroup":
+            case "veco:resources:ServiceGroup":
                 return new ServiceGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("xyz", "resources", _module)
+pulumi.runtime.registerResourceModule("veco", "resources", _module)

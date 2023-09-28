@@ -3,10 +3,10 @@ package resources
 import (
 	"fmt"
 
+	"github.com/nick-barrett/pulumi-veco/provider/pkg/provider/api"
+	"github.com/nick-barrett/pulumi-veco/provider/pkg/provider/config"
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/provider/api"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/provider/config"
 )
 
 var _ = (infer.CustomResource[AddressGroupInputs, AddressGroupOutputs])((*AddressGroup)(nil))
@@ -34,7 +34,7 @@ func (ag *AddressGroup) Create(ctx p.Context, name string, input AddressGroupInp
 		return name, state, nil
 	}
 
-	config := infer.GetConfig[config.XyzConfig](ctx)
+	config := infer.GetConfig[config.VecoConfig](ctx)
 
 	objectId, err := api.InsertAddressGroup(config.Client(), name, input.Prefixes, input.Domains)
 	if err != nil {
@@ -47,7 +47,7 @@ func (ag *AddressGroup) Create(ctx p.Context, name string, input AddressGroupInp
 }
 
 func (ag *AddressGroup) Delete(ctx p.Context, id string, props AddressGroupOutputs) error {
-	config := infer.GetConfig[config.XyzConfig](ctx)
+	config := infer.GetConfig[config.VecoConfig](ctx)
 
 	return api.DeleteObjectGroup(config.Client(), props.AddressGroupId)
 }
@@ -59,7 +59,7 @@ func (ag *AddressGroup) Update(ctx p.Context, id string, olds AddressGroupOutput
 		return state, nil
 	}
 
-	config := infer.GetConfig[config.XyzConfig](ctx)
+	config := infer.GetConfig[config.VecoConfig](ctx)
 
 	if err := api.UpdateAddressGroup(config.Client(), olds.AddressGroupId, id, news.Prefixes, news.Domains); err != nil {
 		return olds, err
@@ -121,7 +121,7 @@ func (ag *AddressGroup) Diff(ctx p.Context, id string, olds AddressGroupOutputs,
 
 func (ag *AddressGroup) Read(ctx p.Context, id string, inputs AddressGroupInputs, state AddressGroupOutputs) (
 	string, AddressGroupInputs, AddressGroupOutputs, error) {
-	config := infer.GetConfig[config.XyzConfig](ctx)
+	config := infer.GetConfig[config.VecoConfig](ctx)
 
 	_, prefixes, domains, err := api.GetAddressGroup(config.Client(), state.AddressGroupId)
 	if err != nil {
@@ -196,7 +196,7 @@ func (sg *ServiceGroup) Create(ctx p.Context, name string, input ServiceGroupInp
 		return name, state, nil
 	}
 
-	config := infer.GetConfig[config.XyzConfig](ctx)
+	config := infer.GetConfig[config.VecoConfig](ctx)
 
 	inputsInterfaces := make([]api.NetworkService, 0, len(input.Tcp)+len(input.Udp)+len(input.Icmp)+len(input.Icmp6))
 	for _, i := range input.Tcp {
@@ -223,7 +223,7 @@ func (sg *ServiceGroup) Create(ctx p.Context, name string, input ServiceGroupInp
 }
 
 func (sg *ServiceGroup) Delete(ctx p.Context, id string, props ServiceGroupOutputs) error {
-	config := infer.GetConfig[config.XyzConfig](ctx)
+	config := infer.GetConfig[config.VecoConfig](ctx)
 
 	return api.DeleteObjectGroup(config.Client(), props.ServiceGroupId)
 }
@@ -235,7 +235,7 @@ func (sg *ServiceGroup) Update(ctx p.Context, id string, olds ServiceGroupOutput
 		return state, nil
 	}
 
-	config := infer.GetConfig[config.XyzConfig](ctx)
+	config := infer.GetConfig[config.VecoConfig](ctx)
 
 	inputsInterfaces := make([]api.NetworkService, 0, len(news.Tcp)+len(news.Udp)+len(news.Icmp)+len(news.Icmp6))
 	for _, i := range news.Tcp {

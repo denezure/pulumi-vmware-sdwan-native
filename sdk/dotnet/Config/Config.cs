@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Xyz
+namespace Pulumi.Veco
 {
     public static class Config
     {
@@ -30,7 +30,7 @@ namespace Pulumi.Xyz
             }
         }
 
-        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("xyz");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("veco");
 
         private static readonly __Value<string?> _vcoApiKey = new __Value<string?>(() => __config.Get("vcoApiKey"));
         /// <summary>

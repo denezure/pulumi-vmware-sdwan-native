@@ -9,24 +9,24 @@ from .provider import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_xyz.config as __config
+    import pulumi_veco.config as __config
     config = __config
-    import pulumi_xyz.resources as __resources
+    import pulumi_veco.resources as __resources
     resources = __resources
 else:
-    config = _utilities.lazy_import('pulumi_xyz.config')
-    resources = _utilities.lazy_import('pulumi_xyz.resources')
+    config = _utilities.lazy_import('pulumi_veco.config')
+    resources = _utilities.lazy_import('pulumi_veco.resources')
 
 _utilities.register(
     resource_modules="""
 [
  {
-  "pkg": "xyz",
+  "pkg": "veco",
   "mod": "resources",
-  "fqn": "pulumi_xyz.resources",
+  "fqn": "pulumi_veco.resources",
   "classes": {
-   "xyz:resources:AddressGroup": "AddressGroup",
-   "xyz:resources:ServiceGroup": "ServiceGroup"
+   "veco:resources:AddressGroup": "AddressGroup",
+   "veco:resources:ServiceGroup": "ServiceGroup"
   }
  }
 ]
@@ -34,9 +34,9 @@ _utilities.register(
     resource_packages="""
 [
  {
-  "pkg": "xyz",
-  "token": "pulumi:providers:xyz",
-  "fqn": "pulumi_xyz",
+  "pkg": "veco",
+  "token": "pulumi:providers:veco",
+  "fqn": "pulumi_veco",
   "class": "Provider"
  }
 ]

@@ -111,7 +111,7 @@ class AddressGroup(pulumi.CustomResource):
             __props__.__dict__["prefixes"] = prefixes
             __props__.__dict__["address_group_id"] = None
         super(AddressGroup, __self__).__init__(
-            'xyz:resources:AddressGroup',
+            'veco:resources:AddressGroup',
             resource_name,
             __props__,
             opts)

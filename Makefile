@@ -1,10 +1,10 @@
-PROJECT_NAME := Pulumi Xyz Resource Provider
+PROJECT_NAME := Pulumi VMware Edge Cloud Orchestrator Resource Provider
 
-PACK             := xyz
+PACK             := veco
 PACKDIR          := sdk
-PROJECT          := github.com/pulumi/pulumi-xyz
-NODE_MODULE_NAME := @pulumi/xyz
-NUGET_PKG_NAME   := Pulumi.Xyz
+PROJECT          := github.com/nick-barrett/pulumi-veco
+NODE_MODULE_NAME := @nick-barrett/veco
+NUGET_PKG_NAME   := NickBarrett.Veco
 
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         ?= $(shell pulumictl get version)
@@ -18,8 +18,8 @@ TESTPARALLELISM := 4
 
 ensure::
 	cd provider && go mod tidy
-	cd sdk && go mod tidy
 	cd tests && go mod tidy
+#	cd sdk && go mod tidy
 
 provider::
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" $(PROJECT)/${PROVIDER_PATH}/cmd/$(PROVIDER))
@@ -72,7 +72,9 @@ build:: provider build_sdks
 build_dev:: nodejs_sdk
 
 .PHONY: build_sdks
-build_sdks:: dotnet_sdk go_sdk nodejs_sdk python_sdk
+# go sdk gen is currently broken. go mod tidy fails to install deps.
+#build_sdks:: dotnet_sdk go_sdk nodejs_sdk python_sdk
+build_sdks:: dotnet_sdk nodejs_sdk python_sdk
 
 # Required for the codegen action that runs in pulumi/pulumi
 only_build:: build
@@ -96,7 +98,7 @@ test_all:: test_provider
 	cd tests/sdk/nodejs && $(GO_TEST) ./...
 	cd tests/sdk/python && $(GO_TEST) ./...
 	cd tests/sdk/dotnet && $(GO_TEST) ./...
-	cd tests/sdk/go && $(GO_TEST) ./...
+#	cd tests/sdk/go && $(GO_TEST) ./...
 
 install_dotnet_sdk::
 	rm -rf $(WORKING_DIR)/nuget/$(NUGET_PKG_NAME).*.nupkg
@@ -104,9 +106,6 @@ install_dotnet_sdk::
 	find . -name '*.nupkg' -print -exec cp -p {} ${WORKING_DIR}/nuget \;
 
 install_python_sdk::
-	#target intentionally blank
-
-install_go_sdk::
 	#target intentionally blank
 
 install_nodejs_sdk::

@@ -14,19 +14,19 @@ def readme():
         with open('README.md', encoding='utf-8') as f:
             return f.read()
     except FileNotFoundError:
-        return "xyz Pulumi Package - Development Version"
+        return "veco Pulumi Package - Development Version"
 
 
-setup(name='pulumi_xyz',
+setup(name='pulumi_veco',
       python_requires='>=3.7',
       version=VERSION,
-      description="Work-in-progress VMware SD-WAN Pulumi provider",
+      description="VMware Edge Cloud Orchestrator provider",
       long_description=readme(),
       long_description_content_type='text/markdown',
       keywords='pulumi vmware sd-wan kind/native',
       packages=find_packages(),
       package_data={
-          'pulumi_xyz': [
+          'pulumi_veco': [
               'py.typed',
               'pulumi-plugin.json',
           ]

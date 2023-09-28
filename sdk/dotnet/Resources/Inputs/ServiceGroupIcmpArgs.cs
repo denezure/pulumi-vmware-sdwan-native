@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Xyz.Resources.Inputs
+namespace Pulumi.Veco.Resources.Inputs
 {
 
     public sealed class ServiceGroupIcmpArgs : global::Pulumi.ResourceArgs
